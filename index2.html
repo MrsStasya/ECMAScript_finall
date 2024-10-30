@@ -1,0 +1,76 @@
+<!-- Реализуйте функцию для отправки данных о пользователе на сервер:
+Функция saveUserData
+● Описание:
+○ Функция принимает объект с данными о пользователе и использует fetch для отправки данных на удаленный сервер.
+○ Функция возвращает промис, который разрешается, если данные успешно отправлены.
+○ Если запрос неуспешен, промис должен быть отклонен с соответствующим сообщением об ошибке.
+● Подсказка:
+○ Используйте метод POST и задайте заголовок Content-Type как application/json.
+○ Объект с данными о пользователе необходимо сериализовать в JSON-строку с помощью JSON.stringify().
+Пример использования функции
+const user = {
+name: 'John Smith',
+age: 30,
+email: 'john@example.com'
+};
+saveUserData(user)
+.then(() => {
+console.log('User data saved successfully');
+})
+.catch(error => {
+console.error(error);
+}); -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW2</title>
+</head>
+<body>
+   <script>
+        async function saveUserData(user, url) {
+            let response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(user),
+            });
+            if (!response.ok) {
+                console.log(response.status);
+                throw new Error("Ошибка отправки запроса: " + response.status);
+            } else {
+                console.log(response.status);
+            }
+        }
+
+        const user = {
+            name: "John Smith",
+            age: 30,
+            email: "john@example.com",
+        };
+
+        const url1 = "https://jsonplaceholder.typicode.com/us";
+        const url2 = "https://jsonplaceholder.typicode.com/users";
+
+        saveUserData(user, url1)
+        .then(() => {
+            console.log("User data saved successfully");
+        })
+        .catch((error) => {
+            console.log(error.message);
+        });
+
+        saveUserData(user, url2)
+        .then(() => {
+            console.log("User data saved successfully");
+        })
+        .catch((error) => {
+            console.log(error.message);
+        });
+
+   </script> 
+</body>
+</html>

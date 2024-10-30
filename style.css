@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+  .begin {
+    display: flex;
+    text-align: center;
+  }
+
+  .class {
+    color: #800080;
+    font-size: 100px;
+  }
+  .color {
+    color: aqua;
+    font-size: 200px;
+    font-style: italic;
+  }
